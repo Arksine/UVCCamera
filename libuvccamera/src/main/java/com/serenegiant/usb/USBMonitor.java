@@ -21,6 +21,9 @@ package com.serenegiant.usb;
  *
  * All files in the folder are under this Apache License, Version 2.0.
  * Files in the jni/libjpeg, jni/libusb, jin/libuvc, jni/rapidjson folder may have a different license, see the respective files.
+ *
+ * This file was modified by Eric Callahan, 2016.  All modifications are covered under
+ * the Apache license above
 */
 
 import java.lang.ref.WeakReference;
@@ -62,6 +65,8 @@ public final class USBMonitor {
 	private List<DeviceFilter> mDeviceFilters = new ArrayList<DeviceFilter>();
 
 	private final Handler mHandler = new Handler();
+
+	public enum ExternalAction {ADD_DEVICE, PROCESS_ATTACH, PROCESS_DETACH}
 
 	public interface OnDeviceConnectListener {
 		/**
@@ -275,6 +280,35 @@ public final class USBMonitor {
 			}
 		} else {
 			Log.i(TAG, "no device");
+		}
+	}
+
+	/**
+	 * Allows calling applications that have their own BroadcastReceiver registered to handle
+	 * Usb events to directly manipulate the USB Monitor.
+	 *
+	 * @param device
+	 * @param action
+     */
+	public void processExternallyMangedDevice(final UsbDevice device, ExternalAction action) {
+		switch (action) {
+			case ADD_DEVICE:
+				if (hasPermission(device)) {
+					processConnect(device);
+				} else {
+					processCancel(device);
+				}
+				break;
+
+			case PROCESS_ATTACH:
+				processAttach(device);
+				break;
+
+			case PROCESS_DETACH:
+				processDettach(device);
+				break;
+
+			default:
 		}
 	}
 

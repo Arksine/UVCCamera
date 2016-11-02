@@ -32,3 +32,6 @@ local.properties
 # gedit
 *~
 libuvccamera/src/main/libs
+
+#Android Studio
+libuvccamera/.externalNativeBuild
