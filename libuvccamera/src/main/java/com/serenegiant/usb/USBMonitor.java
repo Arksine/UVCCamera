@@ -76,12 +76,11 @@ public final class USBMonitor {
 	private PendingIntent mPermissionIntent = null;
 	private List<DeviceFilter> mDeviceFilters = new ArrayList<DeviceFilter>();
 
-<<<<<<< HEAD
+
 	private final Handler mHandler = new Handler();
 
 	public enum ExternalAction {ADD_DEVICE, PROCESS_ATTACH, PROCESS_DETACH}
 
-=======
 	/**
 	 * コールバックをワーカースレッドで呼び出すためのハンドラー
 	 */
@@ -90,7 +89,6 @@ public final class USBMonitor {
 	/**
 	 * USB機器の状態変更時のコールバックリスナー
 	 */
->>>>>>> refs/remotes/saki4510t/master
 	public interface OnDeviceConnectListener {
 		/**
 		 * called when device attached
