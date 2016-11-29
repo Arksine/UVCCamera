@@ -3,7 +3,7 @@ UVCCamera
 
 library and sample to access to UVC web camera on non-rooted Android device
 
-Copyright (c) 2014-2015 saki t_saki@serenegiant.com
+Copyright (c) 2014-2016 saki t_saki@serenegiant.com
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -146,3 +146,16 @@ Merge pull request(add status and button callback). Thanks Alexey Pelykh.
 
 ###2015/12/16
 Add feature so that user can request fps range from Java code when negotiating with camera. Actual resulted fps depends on each UVC camera. Currently there is no way to get resulted fps(will add on future).
+
+###2016/03/01
+update minoru001 branch, experimentaly support streo camera.
+
+###2016/06/18
+replace libjpeg-turbo 1.4.0 with 1.5.0
+
+###2016/11/17
+apply bandwidth factor setting of usbcameratest7 on master branch
+
+###2016/11/21
+Now this repository supports Android N(7.x) and dynamic permission model of Android N and later.
+
